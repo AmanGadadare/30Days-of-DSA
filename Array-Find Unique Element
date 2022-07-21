@@ -1,0 +1,73 @@
+You have been given an integer array/list(ARR) of size N. Where N is equal to [2M + 1].
+Now, in the given array/list, 'M' numbers are present twice and one number is present only once.
+You need to find and return that number which is unique in the array/list.
+
+Input :-
+
+2
+5
+2 4 7 2 7
+9
+1 3 1 3 6 6 7 10 7
+Sample Output 2:
+4
+10
+
+
+Code:-
+1.Using Brute force 
+
+public class Solution{  
+
+    public static int findUnique(int[] arr){
+	
+        
+        for (int i= 0; i <arr.length ;i++){   
+          int j;
+              for (j=0;j<arr.length;j++){
+                if(i!=j){         
+                     if(arr[i]==arr[j]){ //agar match ho raha hai then break cz we have to find the unique.
+                    break;
+               }
+             }
+           }
+    
+            if(j==arr.length){  // for edge test case eg.2 3 1 6 3 6   goes till 6 // for run timr error  agar j ki value last tak gayi hai then return the value of ith elemnt
+          return arr[i];
+            }
+     }
+        
+     return Integer.MAX_VALUE;
+    }
+     
+        
+        
+}
+    
+    
+    
+ 2.Using Sorting Method  
+ Import java.util.*;
+public class Solution{  
+    
+    public static int duplicateNumber(int arr[]) {
+    	//Your code goes here
+        
+       Arrays.sort(arr);  //first sort the array 
+        
+       for(int i=0;i<arr.length-1;i=i+2){
+           if(arr[i]!=arr[i+1] ){  //traverse the sorted array if element match return that element
+               return arr[i];
+                
+           }      
+              
+              
+   }
+               return -1;
+        
+        
+        }
+        }
+    
+    
+    
