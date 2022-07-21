@@ -1,0 +1,69 @@
+Intersection of Two Arrays II
+Send Feedback
+You have been given two integer arrays/list(ARR1 and ARR2) of size N and M, respectively. You need to print their intersection; An intersection for this problem can be defined when both the arrays/lists contain a particular value or to put it in other words, when there is a common value that exists in both the arrays/lists.
+Note :
+Input arrays/lists can contain duplicate elements.
+
+The intersection elements printed would be in the order they appear in the first array/list(ARR1)
+Input
+2
+6
+2 6 8 5 4 3
+4
+2 3 4 7 
+2
+10 10
+1
+10
+Sample Output 1 :
+2 4 3
+10
+
+code:-Using CN (will not pass all cases) 
+import java.util.*;
+public class Solution{  
+    
+    public static void intersections(int arr1[], int arr2[]) {
+        
+        for(int i=0;i<arr1.length;i++){
+            for(int j=0;j<arr2.length;j++){
+                if(arr1[i]==arr2[j]){  //compare 1st value of arr1 with all the value of arr2 if found print it and aassign it infinity .
+                    System.out.print(arr1[i] + "");
+                    arr2[j]=Integer.MIN_VALUE;    //mark the printed element by assign value infinity so no duplicate elements.
+                    break;
+                    
+                }
+            }
+                
+        
+        }  
+    	
+    }
+           
+}
+
+
+Using Hashset:-
+
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> m=new HashSet<>();  //created a hashset to store the result which will not store the duplicate value
+        
+        for(int i=0;i<nums1.length;i++) {  
+            for(int j=0;j<nums2.length;j++){
+                
+            if(nums1[i]==nums2[j]){  //comare value from arr1 with value of arr2 if found store it on the new hashset store the elment from arr2
+                m.add(nums2[j]);
+            }
+        }
+        }
+        int ans[]= new int[m.size()];  //create a new array with size of hashset
+        int count=0;    
+        for(Integer i:m)    // for loop for arr1 will iterate till arr1 element
+            ans[count++]=i;
+        
+        return ans;
+        
+    
+}
+}
